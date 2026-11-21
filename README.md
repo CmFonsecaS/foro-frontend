@@ -97,3 +97,15 @@ Nginx en la EC2 enruta:
 | `/` | frontend (4000) |
 
 Secretos del repositorio: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`. Variables: `AWS_REGION`, `EC2_INSTANCE_ID`.
+
+En AWS Academy las credenciales del laboratorio son temporales, por lo que los secrets deben
+actualizarse al iniciar cada sesión. La IP pública de la instancia cambia si esta se reinicia.
+
+## Flujo de trabajo Git
+
+- `main` es la rama estable: cada cambio de código integrado en ella se despliega en AWS.
+- Los cambios se desarrollan en ramas de corta duración con un prefijo según su tipo:
+  `feature/`, `fix/`, `docs/`, `ci/`, `refactor/`.
+- Cada rama se integra a `main` mediante un Pull Request (merge commit) y se elimina después del merge.
+- Los mensajes de commit siguen la convención *Conventional Commits*: `feat:`, `fix:`, `docs:`,
+  `test:`, `ci:`, `refactor:`.
